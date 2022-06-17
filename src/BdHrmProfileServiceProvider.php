@@ -15,8 +15,9 @@ class BdHrmProfileServiceProvider extends ServiceProvider
     {
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'wovosoft');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'wovosoft');
+
         $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadRoutesFrom(__DIR__ . '/routes/web.php');
 
         // Publishing is only necessary when using the CLI.
         if ($this->app->runningInConsole()) {
@@ -65,6 +66,11 @@ class BdHrmProfileServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../database/migrations' => base_path('database/migrations'),
         ], 'bd-hrm-profile.migrations');
+
+        // Publishing the factories.
+        $this->publishes([
+            __DIR__ . '/../database/factories' => base_path('database/factories'),
+        ], 'bd-hrm-profile.factories');
 
         // Publishing the views.
         /*$this->publishes([
