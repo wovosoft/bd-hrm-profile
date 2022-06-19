@@ -1,0 +1,33 @@
+{
+    "name": "bd-hrm-profile",
+    "version": "1.0.0",
+    "description": "Profile Module HRM Systems on the basis of Bangladeshi People",
+    "main": "index.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wovosoft/bd-hrm-profile.git"
+    },
+    "keywords": [
+        "Bangladesh",
+        "HRM",
+        "Profile Module"
+    ],
+    "author": "Narayan Adhikary",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/wovosoft/bd-hrm-profile/issues"
+    },
+    "homepage": "https://github.com/wovosoft/bd-hrm-profile#readme",
+    "devDependencies": {
+        "vitepress": "^1.0.0-alpha.1",
+        "vue": "^3.2.37"
+    },
+    "scripts": {
+        "docs:dev": "vitepress dev docs",
+        "docs:build": "vitepress build docs",
+        "docs:serve": "vitepress serve docs"
+    }
+}

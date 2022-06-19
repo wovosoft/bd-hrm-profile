@@ -15,7 +15,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('profiles', function (Blueprint $table) {
+        Schema::create(config("bd-hrm-profile.table_prefix") . 'profiles', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->string("bn_name")->nullable();
@@ -48,6 +48,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('profiles');
+        Schema::dropIfExists(config("bd-hrm-profile.table_prefix") . 'profiles');
     }
 };

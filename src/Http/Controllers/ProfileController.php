@@ -9,4 +9,5 @@ use Wovosoft\BdHrmProfile\Actions\ProfileActions;
 class ProfileController extends Controller
 {
     use ProfileActions;
+
 }

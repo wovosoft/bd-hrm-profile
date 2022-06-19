@@ -35,9 +35,9 @@ trait ProfileActions
         return Data::destroy($profile);
     }
 
-    public function find(Profile $profile, Request $request): string
+    public function find(Profile $profile): Profile
     {
-        return $profile->toJson();
+        return $profile;
     }
 
     public function index(Request $request): LengthAwarePaginator
