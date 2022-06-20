@@ -1,36 +1,73 @@
-# Upazila
+# PermanentAddress Model
 
-Provides Upazilas
-
-## Example
-
-```php
-use \Wovosoft\BdGeocode\Models\Upazila;
-
-$upazila= \Wovosoft\BdGeocode\Models\Upazila::query()->first();
-
-$upazila->district; //returns district under which the upazila exists
-$upazila->division; //returns division under which the upazila exists
-$upazila->unions;   //returns unions under the upazila
-```
+Use to Hold Permanent Address Information of a Person.
 
 ## Relations
 
+- `Profile->hasOne(PermanentAddress)`
+- `PermanentAddress->belongsTo(Profile)`
+
+## Fields
+
+| Name          | Type                 |
+|---------------|----------------------|
+| `division_id` | unsigned big integer |
+| `district_id` | unsigned big integer |
+| `upazila_id`  | unsigned big integer |
+| `union_id`    | unsigned big integer |
+| `village`     | string               |
+| `word`        | string               |
+| `address`     | string               |
+
+Some other fields can be added depending on your needs.
+
+## CRUD Operations
+
+CRUD Operations can be performed using the model itself. Or, the following methods can be used:
+
+### Create
+
 ```php
-public function division(): HasOneThrough
-public function district(): BelongsTo
-public function unions(): HasMany
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\PermanentAddress;
+use \Wovosoft\BdHrmProfile\Models\Profile;
+
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::addProperty(Profile::class,[
+    "division_id"=> 1,
+    "district_id"=> 1,
+    "upazila_id"=>  1,
+    "union_id"=>    1, 
+    "village"=> 1,   
+    "word"=>    1,     
+    "address"=> "" 
+]);
 ```
 
-The example given at the top, uses these relations to return the division, district and unions using magic props. But in
-case you need to modify the final query, use the laravel approach to do so.
+### Update
 
 ```php
-use \Wovosoft\BdGeocode\Models\Upazila;
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\PermanentAddress;
 
-$upazila= Upazila::query()->first();
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::updateProperty(PermanentAddress::class,[
+    "division_id"=> 1,
+    "district_id"=> 1,
+    "upazila_id"=>  1,
+    "union_id"=>    1, 
+    "village"=> 1,   
+    "word"=>    1,     
+    "address"=> "" 
+]);
+```
 
-$upazila->division()->search('rang')->get();   //or other eloquent operations like paginate 
-$upazila->district()->search('thak')->get();   //or other eloquent operations like paginate
-$upazila->unions()->search('ruh')->get();     //or other eloquent operations like paginate
+### Delete
+
+```php
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+
+//returns the new record on success, or throws error on failed.
+//@var $permanentAddress PermanentAddress
+BdHrmProfile::deleteProperty($permanentAddress);
 ```

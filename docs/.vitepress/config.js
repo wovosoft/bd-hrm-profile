@@ -24,13 +24,13 @@ export default {
                 items: [
                     {text: 'Theory', link: '/theory'},
                     {text: 'Searching Models', link: '/searching-models'},
+                    {text: 'Service Provider', link: '/service-container'},
                 ]
             },
             {
                 collapsible: true,
                 text: 'Models',
                 items: [
-                    {text: 'List of Models', link: '/models/index'},
                     {text: 'Profile', link: '/models/profile'},
                     {text: 'CitizenshipInfo', link: '/models/citizenship-info'},
                     {text: 'Contact', link: '/models/contacts'},
@@ -39,7 +39,6 @@ export default {
                     {text: 'PresentAddress', link: '/models/present-address'},
                     {text: 'Photo', link: '/models/photo'},
                     {text: 'PhysicalAttributes', link: '/models/physical-attributes'},
-
                 ]
             },
             {

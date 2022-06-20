@@ -13,8 +13,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create(config("bd-hrm-profile.table_prefix") .'contacts', function (Blueprint $table) {
+        Schema::create(config("bd-hrm-profile.table_prefix") . 'contacts', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger("profile_id");
             $table->string("type")->comment(ContactTypes::class);
             $table->string("content");
             $table->timestamps();
@@ -28,6 +29,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists(config("bd-hrm-profile.table_prefix") .'contacts');
+        Schema::dropIfExists(config("bd-hrm-profile.table_prefix") . 'contacts');
     }
 };

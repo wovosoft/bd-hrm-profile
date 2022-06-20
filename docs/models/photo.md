@@ -1,36 +1,61 @@
-# District
+# Photo Model
 
-Provides districts
-
-## Example
-
-```php
-use \Wovosoft\BdGeocode\Models\District;
-
-$district= \Wovosoft\BdGeocode\Models\District::query()->first();
-
-$district->division;    //returns division under which the district exits
-$district->upazilas;    //returns upazilas under the district
-$district->unions;      //returns unions under the district
-```
+Use to Hold Photos of a Person.
 
 ## Relations
 
+- `Profile->hasMany(Photo)`
+- `Photo->belongsTo(Profile)`
+
+## Fields
+
+| Name        | Type   |
+|-------------|--------|
+| `file_name` | string |
+| `file_path` | string |
+| `disk`      | string |
+
+Some other fields can be added depending on your needs.
+
+## CRUD Operations
+
+CRUD Operations can be performed using the model itself. Or, the following methods can be used:
+
+### Create
+
 ```php
-public function division(): BelongsTo
-public function upazilas(): HasMany
-public function unions(): HasManyThrough
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\Photo;
+use \Wovosoft\BdHrmProfile\Models\Profile;
+
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::addProperty(Photo::class,$profile,[
+    "file_name"=> "test.jpg",
+    "file_path"=> "lsdlkf/sdkfjsd/sdlfkjsd/test.jpg",
+    "disk"=>  "local"
+]);
 ```
 
-The example given at the top, uses these relations to return the division, upazilas and unions using magic props. But in
-case you need to modify the final query, use the laravel approach to do so.
+### Update
 
 ```php
-use \Wovosoft\BdGeocode\Models\District;
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\Photo;
 
-$district= \Wovosoft\BdGeocode\Models\District::query()->first();
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::updateProperty($photo,[
+     "file_name"=> "test.jpg",
+    "file_path"=> "lsdlkf/sdkfjsd/sdlfkjsd/test.jpg",
+    "disk"=>  "local"
+]);
+```
 
-$district->division()->where('id','>',10)->get();   //or other eloquent operations like paginate 
-$district->upazilas()->where('id','>',10)->get();   //or other eloquent operations like paginate
-$district->unions()->where('id','>',10)->get();     //or other eloquent operations like paginate
+### Delete
+
+```php
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+
+//returns the new record on success, or throws error on failed.
+//@var $photo Photo
+BdHrmProfile::deleteProperty($photo);
 ```

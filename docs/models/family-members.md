@@ -1,37 +1,64 @@
-# Union
+# FamilyMember Model
 
-Provides Unions
+Use to Hold Profile Contacts.
 
-## Example
+## Status
 
-```php
-use \Wovosoft\BdGeocode\Models\Union;
-
-$union = Union::query()->first();
-
-$union->division;   //returns the division under which the union exists
-$union->district;   //returns the district under which the union exists
-$union->upazila;    //returns the upazila under which the union exists
-```
+This model **Deprecated**. Very soon this feature will be replaced with another package.
 
 ## Relations
 
+- `Profile->hasMany(FamilyMember)`
+- `FamilyMember->belongsTo(Profile)`
+
+## Fields
+
+| Name         | Type                 | Description        |
+|--------------|----------------------|--------------------|
+| `related_to` | unsigned big integer | Points to profiles |
+| `relation`   | enum                 | Relations          |
+
+Some other fields can be added depending on your needs.
+
+## CRUD Operations
+
+CRUD Operations can be performed using the model itself. Or, the following methods can be used:
+
+### Create
+
 ```php
-public function upazila(): BelongsTo
-public function district(): HasOneThrough
-public function division(): BelongsTo
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\FamilyMember;
+use \Wovosoft\BdHrmProfile\Enums\Relations;
+
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::addProperty(FamilyMember::class,[
+    "related_to" => 2",
+    "relation" => Relations::Father
+]);
 ```
 
-The example given at the top, uses these relations to return the division, district and upazila using magic props. But
-in case you need to modify the final query, use the laravel approach to do so.
+### Update
 
 ```php
-use \Wovosoft\BdGeocode\Models\Union;
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\FamilyMember;
+use \Wovosoft\BdHrmProfile\Enums\Relations;
 
-$union= Union::query()->first();
-
-$union->division()->search('rang')->get();   //or other eloquent operations like paginate 
-$union->district()->search('thak')->get();   //or other eloquent operations like paginate
-$union->upazila()->search('ruh')->get();     //or other eloquent operations like paginate
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::addProperty(FamilyMember::class,[
+    "related_to" => 2",
+    "relation" => Relations::Father
+]);
 ```
 
+### Delete
+
+```php
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\FamilyMember;
+
+//returns the new record on success, or throws error on failed.
+//@var $familyMember FamilyMember
+BdHrmProfile::deleteProperty($familyMember);
+```

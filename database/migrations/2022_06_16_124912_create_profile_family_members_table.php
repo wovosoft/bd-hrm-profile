@@ -13,7 +13,7 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create(config("bd-hrm-profile.table_prefix") .'family_members', function (Blueprint $table) {
+        Schema::create(config("bd-hrm-profile.table_prefix") . 'family_members', function (Blueprint $table) {
             $table->id();
 
             // x is related to y (wrt x).
@@ -29,8 +29,8 @@ return new class extends Migration {
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists(config("bd-hrm-profile.table_prefix") .'family_members');
+        Schema::dropIfExists(config("bd-hrm-profile.table_prefix") . 'family_members');
     }
 };

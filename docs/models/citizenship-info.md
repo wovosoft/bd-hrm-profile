@@ -1,36 +1,65 @@
-# District
+# CitizenshipInfo Model
 
-Provides districts
+Holds the records such as NID, Birth Certificate No. etc. of a Profile.
 
-## Example
+## Relation
+
+- `Profile->hasOne(CitizenshipInfo)`
+- `CitizenshipInfo->belongsTo(Profile)`
+
+## Fields
+
+| Name                | Type   |
+|---------------------|--------|
+| `nid`               | string |
+| `birth_certificate` | string |
+| `tin`               | string |
+| `bin`               | string |
+
+Some other fields can be added depending on your needs.
+
+## CRUD Operations
+
+CRUD Operations can be performed using the model itself. Or, the following methods can be used:
+
+### Create
 
 ```php
-use \Wovosoft\BdGeocode\Models\District;
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\CitizenshipInfo;
 
-$district= \Wovosoft\BdGeocode\Models\District::query()->first();
-
-$district->division;    //returns division under which the district exits
-$district->upazilas;    //returns upazilas under the district
-$district->unions;      //returns unions under the district
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::addProperty(CitizenshipInfo::class,[
+    "nid"=>"121354556",
+    "birth_certificate"=>"4324556456",
+    "tin"=>"654546855",
+    "bin"=>"34564987654654"
+]);
 ```
 
-## Relations
+### Update
 
 ```php
-public function division(): BelongsTo
-public function upazilas(): HasMany
-public function unions(): HasManyThrough
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\CitizenshipInfo;
+
+//returns the new record on success, or throws error on failed.
+//@var $citizenshipInfo CitizenshipInfo
+BdHrmProfile::updateProperty($citizenshipInfo,[
+    "nid"=>"121354556",
+    "birth_certificate"=>"4324556456",
+    "tin"=>"654546855",
+    "bin"=>"34564987654654"
+]);
 ```
 
-The example given at the top, uses these relations to return the division, upazilas and unions using magic props. But in
-case you need to modify the final query, use the laravel approach to do so.
+### Delete
 
 ```php
-use \Wovosoft\BdGeocode\Models\District;
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\CitizenshipInfo;
 
-$district= \Wovosoft\BdGeocode\Models\District::query()->first();
-
-$district->division()->where('id','>',10)->get();   //or other eloquent operations like paginate 
-$district->upazilas()->where('id','>',10)->get();   //or other eloquent operations like paginate
-$district->unions()->where('id','>',10)->get();     //or other eloquent operations like paginate
+//returns the new record on success, or throws error on failed.
+//@var $citizenshipInfo CitizenshipInfo
+BdHrmProfile::deleteProperty($citizenshipInfo);
 ```

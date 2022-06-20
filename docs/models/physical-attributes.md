@@ -1,36 +1,70 @@
-# District
+# Physical Attributes Model
 
-Provides districts
-
-## Example
-
-```php
-use \Wovosoft\BdGeocode\Models\District;
-
-$district= \Wovosoft\BdGeocode\Models\District::query()->first();
-
-$district->division;    //returns division under which the district exits
-$district->upazilas;    //returns upazilas under the district
-$district->unions;      //returns unions under the district
-```
+Use to Hold Physical Attributes Information of a Person.
 
 ## Relations
 
+- `Profile->hasOne(PhysicalAttributes)`
+- `PhysicalAttributes->belongsTo(Profile)`
+
+## Fields
+
+| Name          | Type    |
+|---------------|---------|
+| `height`      | numeric |
+| `weight`      | numeric |
+| `is_disabled` | boolean |
+| `body_color`  | string  |
+| `eye_color`   | string  |
+| `eye_vision`  | string  |
+
+Some other fields can be added depending on your needs.
+
+## CRUD Operations
+
+CRUD Operations can be performed using the model itself. Or, the following methods can be used:
+
+### Create
+
 ```php
-public function division(): BelongsTo
-public function upazilas(): HasMany
-public function unions(): HasManyThrough
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\PhysicalAttributes;
+use \Wovosoft\BdHrmProfile\Models\Profile;
+
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::addProperty(PhysicalAttributes::class,$profile,[
+    "height"=>170,    
+    "weight"=>70,    
+    "is_disabled"=>false,
+    "body_color"=>"brown",
+    "eye_color"=>"black", 
+    "eye_vision"=>"6/6",
+]);
 ```
 
-The example given at the top, uses these relations to return the division, upazilas and unions using magic props. But in
-case you need to modify the final query, use the laravel approach to do so.
+### Update
 
 ```php
-use \Wovosoft\BdGeocode\Models\District;
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
 
-$district= \Wovosoft\BdGeocode\Models\District::query()->first();
 
-$district->division()->where('id','>',10)->get();   //or other eloquent operations like paginate 
-$district->upazilas()->where('id','>',10)->get();   //or other eloquent operations like paginate
-$district->unions()->where('id','>',10)->get();     //or other eloquent operations like paginate
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::updateProperty($physicalAttribute,[
+    "height"=>170,    
+    "weight"=>70,    
+    "is_disabled"=>false,
+    "body_color"=>"brown",
+    "eye_color"=>"black", 
+    "eye_vision"=>"6/6",
+]);
+```
+
+### Delete
+
+```php
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+
+//returns the new record on success, or throws error on failed.
+//@var $presentAddress PresentAddress
+BdHrmProfile::deleteProperty($physicalAttribute);
 ```

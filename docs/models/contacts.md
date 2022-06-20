@@ -1,48 +1,64 @@
-# Divisions
+# Contact Model
 
-This model provides divisions.
+Use to Hold Profile Contacts.
 
-## Example
+## Status
 
-```php
-use \Wovosoft\BdGeocode\Models\Division;
-
-$division = \Wovosoft\BdGeocode\Models\Division::query()->findOrFail(7);
-
-$division->districts;
-$division->upazilas;
-$division->unions;
-```
+This model **Deprecated**. Very soon this feature will be replaced with another package.
 
 ## Relations
 
+- `Profile->hasMany(Contact)`
+- `Contact->belongsTo(Profile)`
+
+## Fields
+
+| Name      | Type   |
+|-----------|--------|
+| `type`    | string |
+| `content` | string |
+
+
+Some other fields can be added depending on your needs.
+
+## CRUD Operations
+
+CRUD Operations can be performed using the model itself. Or, the following methods can be used:
+
+### Create
+
 ```php
-public function districts(): HasMany
-public function upazilas(): HasManyThrough
-public function unions(): Builder
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\Contact;
+
+//returns the new record on success, or throws error on failed.
+BdHrmProfile::addProperty(Contact::class,[
+    "type"=>"phone",
+    "content"=>"4324556456",
+]);
 ```
 
-The first method can be used to access districts by magic property.
+### Update
 
 ```php
-use \Wovosoft\BdGeocode\Models\Division;
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\CitizenshipInfo;
 
-$division = \Wovosoft\BdGeocode\Models\Division::query()->findOrFail(7);
-
-$division->districts;
+//returns the new record on success, or throws error on failed.
+//@var $contact Contact
+BdHrmProfile::updateProperty($contact,[
+    "type"=>"phone",
+    "content"=>"4324556456",
+]);
 ```
 
-But if you need to modify the list of districts, then call the method directly it will give you instance of `HasMany`
-which supports all Eloquent Builder methods. So, now you can modify the query here.
+### Delete
 
 ```php
-use \Wovosoft\BdGeocode\Models\Division;
+use \Wovosoft\BdHrmProfile\Facades\BdHrmProfile;
+use \Wovosoft\BdHrmProfile\Models\Contact;
 
-$division = \Wovosoft\BdGeocode\Models\Division::query()->findOrFail(7);
-
-$division->districts()->where('name','like','%thak%')->get(); //->paginate() etc
-//or
-$division->districts()->search("thak")->get(); //->paginate() etc
+//returns the new record on success, or throws error on failed.
+//@var $contact Contact
+BdHrmProfile::deleteProperty($contact);
 ```
-
-The above theory is applicable for upazilas and unions as well.
