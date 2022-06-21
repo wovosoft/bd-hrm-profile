@@ -51,3 +51,9 @@ Route::middleware(['auth:sanctum'])->group(function (){
 ```
 
 To disable a route, set `null` controller value in `bd-hrm-profile.php` file.
+
+## Publish Migrations
+
+```shell
+php artisan vendor:publish --tag="bd-hrm-profile.migrations"
+```

@@ -3,7 +3,7 @@ layout: home
 
 hero:
   name: Profile Module for HRMS Systems
-  text: ... on the basis of Bangladesh.
+  text: ... Bangladesh based.
   tagline: This Package is Made for Laravel Related Projects by Wovosoft.
   actions:
     - theme: brand

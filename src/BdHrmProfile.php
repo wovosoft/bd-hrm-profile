@@ -101,7 +101,7 @@ class BdHrmProfile
         }
     }
 
-    public function routes(): void
+    public static function routes(): void
     {
         Route::prefix(config("bd-hrm-profile.route_prefix"))->name("profiles.")->group(function () {
             if (config("bd-hrm-profile.controllers.profile")) {
