@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Wovosoft\BdHrmProfile\Helpers\Data;
 use Wovosoft\BdHrmProfile\Models\FamilyMember;
 use Wovosoft\BdHrmProfile\Models\Profile;
+use Wovosoft\LaravelCommon\Helpers\Data;
 
 trait FamilyMemberActions
 {
