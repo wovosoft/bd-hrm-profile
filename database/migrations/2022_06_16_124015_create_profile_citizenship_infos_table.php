@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->unsignedBigInteger("profile_id");
             $table->string("nid")->nullable();
             $table->string("birth_certificate")->nullable();
+            $table->string("passport_no")->nullable();
             $table->string("tin")->nullable();
             $table->string("bin")->nullable();
             $table->timestamps();

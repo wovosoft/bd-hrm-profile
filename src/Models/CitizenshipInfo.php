@@ -18,6 +18,7 @@ class CitizenshipInfo extends Model implements HasRulesInterface
         return [
             "nid" => ["string", "nullable"],
             "birth_certificate" => ["string", "nullable"],
+            "passport_no" => ["string", "nullable"],
             "tin" => ["string", "nullable"],
             "bin" => ["string", "nullable"],
         ];
