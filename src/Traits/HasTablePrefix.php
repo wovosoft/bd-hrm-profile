@@ -4,11 +4,10 @@ namespace Wovosoft\BdHrmProfile\Traits;
 
 trait HasTablePrefix
 {
-    public function getTable(): string
+    use \Wovosoft\LaravelCommon\Traits\HasTablePrefix;
+
+    public function getPrefix(): string
     {
-        if (config("bd-hrm-profile.table_prefix")) {
-            return config("bd-hrm-profile.table_prefix") . parent::getTable();
-        }
-        return parent::getTable();
+        return config("bd-hrm-profile.table_prefix");
     }
 }
