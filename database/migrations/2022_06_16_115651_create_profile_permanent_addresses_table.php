@@ -24,11 +24,14 @@ return new class extends Migration {
             $table->unsignedBigInteger("union_id")->nullable();
 
             $table->string("village")->nullable();
+            $table->string("post_office")->nullable();
+            $table->string("road")->nullable();
             $table->string("word")->nullable();
+            $table->string("phone")->nullable();
+            $table->string("email")->nullable();
 
             //when above fields don't satisfy the needs
-            $table->string("address")->nullable();
-
+            $table->text("address")->nullable();
             $table->timestamps();
         });
     }

@@ -21,8 +21,12 @@ class PresentAddress extends Model implements HasRulesInterface
             "upazila_id" => ["numeric", "nullable"],
             "union_id" => ["numeric", "nullable"],
             "village" => ["string", "nullable"],
+            "post_office" => ["string", "nullable"],
+            "road" => ["string", "nullable"],
             "word" => ["string", "nullable"],
             "address" => ["string", "nullable"],
+            "phone" => ["string", "nullable"],
+            "email" => ["email", "nullable"],
         ];
     }
 }
