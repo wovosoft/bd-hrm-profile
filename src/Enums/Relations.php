@@ -3,6 +3,9 @@
 namespace Wovosoft\BdHrmProfile\Enums;
 enum Relations: string
 {
+    case Husband = "husband";
+    case Wife = "wife";
+    
     case Father = "father";
     case Mother = "mother";
     case Sister = "sister";
