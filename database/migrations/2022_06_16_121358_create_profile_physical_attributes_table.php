@@ -16,8 +16,8 @@ return new class extends Migration {
         Schema::create(config("bd-hrm-profile.table_prefix") .'physical_attributes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("profile_id");
-            $table->unsignedInteger("height")->nullable();          //unit: cm
-            $table->unsignedInteger("weight")->nullable();          //unit: kg
+            $table->unsignedDouble("height")->nullable();          //unit: cm
+            $table->unsignedDouble("weight")->nullable();          //unit: kg
             $table->boolean("is_disabled")->default(false);
             $table->string("body_color")->nullable()->comment(HumanColors::class);
             $table->string("eye_color")->nullable()->comment(HumanColors::class);
