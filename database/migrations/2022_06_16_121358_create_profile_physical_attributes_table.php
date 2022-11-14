@@ -24,6 +24,7 @@ return new class extends Migration {
 
             //https://vu.ca/en/journal/how-do-optometrists-measure-vision/#:~:text=Visual%20acuity%20is%20usually%20measured,lines%2C%20from%20biggest%20to%20smallest.
             $table->string("eye_vision")->nullable();   // 6/6 etc
+            $table->string("blood_group")->nullable();   // 6/6 etc
 
             //some other fields can be added here
 

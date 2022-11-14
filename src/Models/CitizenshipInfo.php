@@ -4,6 +4,7 @@ namespace Wovosoft\BdHrmProfile\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Validation\Rules\Enum;
 use Laravel\Scout\Searchable;
 use Wovosoft\BdHrmProfile\Interfaces\HasRulesInterface;
 use Wovosoft\BdHrmProfile\Traits\HasProfile;
@@ -21,6 +22,7 @@ class CitizenshipInfo extends Model implements HasRulesInterface
             "passport_no" => ["string", "nullable"],
             "tin" => ["string", "nullable"],
             "bin" => ["string", "nullable"],
+            "driving_license" => ["string", "nullable"],
         ];
     }
 }

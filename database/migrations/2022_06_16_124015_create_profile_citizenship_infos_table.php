@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string("passport_no")->nullable();
             $table->string("tin")->nullable();
             $table->string("bin")->nullable();
+            $table->string("driving_license")->nullable();
             $table->timestamps();
         });
     }
